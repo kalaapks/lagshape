@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lagshape"
+version = "0.1.0"
+description = "The geometry of linear time-series processes (AR, MA, ARMA)."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "statsmodels"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
