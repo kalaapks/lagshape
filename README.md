@@ -1,6 +1,10 @@
 # lagshape
 
-**See what an AR, MA or ARMA process "looks" like — and test whether your model, that supposedly fits the data, actually fits.**
+>**See what an AR, MA or ARMA process "looks" like — and test whether your estimated model, that supposedly fits the messy real life market data, actually fits.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
+---
 
 ![Sliding φ in an AR(1) process: the cloud of (Yₜ₋₁, Yₜ) stretches along the diagonal and its ellipse follows](images/sweep.gif)
 ![The corresponding Time-series](images/arma_animation.gif)
