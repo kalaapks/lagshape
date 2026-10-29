@@ -1,7 +1,7 @@
 """Interactive plotly pictures for lagshape.
 
 Every function returns a plotly ``Figure``; call ``.show()`` to open it
-(in a plain IPython session it opens in your browser), or ``.write_html("x.html")``.
+(in a plain IPython session it opens in your browser).
 
 Pictures of the dot cloud
     plot_cloud      dots + covariance ellipse/ellipsoid + axes + best-guess line/plane (lags 1 or 2)
