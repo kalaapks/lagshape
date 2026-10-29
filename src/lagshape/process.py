@@ -140,7 +140,9 @@ class ARMAProcess:
         self._require_stationary()
         if nlags < 0:
             raise ValueError("nlags must be >= 0")
-        return np.asarray(self._sm.pacf(nlags + 1))
+        x = np.asarray(self._sm.pacf(nlags + 1))
+        y =np.where(x < 1e-12, 0, x)
+        return y
 
     @property
     def variance(self) -> float:
