@@ -3,7 +3,7 @@
 Every function returns a plotly ``Figure``; call ``.show()`` to open it
 (in a plain IPython session it opens in your browser), or ``.write_html("x.html")``.
 
-Pictures of the dot cloud (what your HTML pages show)
+Pictures of the dot cloud
     plot_cloud      dots + covariance ellipse/ellipsoid + axes + best-guess line/plane (lags 1 or 2)
     plot_series     the time series, with theory bands if a model is given
     plot_acf        sample vs theoretical autocorrelation (or partial autocorrelation)
@@ -14,7 +14,7 @@ New views
     plot_convergence    best-guess weights as more lags are allowed, vs the AR(inf) weights
     plot_ellipses       overlay the ellipses of several clouds (models and/or data)
 
-Plot coordinates follow the HTML pages: x = Y_{t-1}, y = Y_t, z = Y_{t-2}.
+Plot coordinates follow: x = Y_{t-1}, y = Y_t, z = Y_{t-2}.
 (The library's own order is (Y_t, Y_{t-1}, Y_{t-2}); this module reorders.)
 
 Change the look globally with ``lagshape.plots.TEMPLATE = "plotly_white"``.
@@ -136,8 +136,8 @@ def plot_cloud(source,
                title: str | None = None) -> go.Figure:
     """Dot cloud of (Y_{t-1}, Y_t) (lags=1, 2D) or (Y_{t-1}, Y_t, Y_{t-2}) (lags=2, 3D).
 
-    Parameters
-    ----------
+    Parameters:
+    
     source : ARMAProcess (n points are simulated) or an array of data.
     model  : optional ARMAProcess to overlay on data. Its exact ellipse is drawn solid, the data's own ellipse dashed/transparent.
     radius : ellipse size in standard deviations (2 = the usual "2-sigma" ellipse).
@@ -202,11 +202,13 @@ def plot_series(source, *,
                 yrange: float | tuple[float, float] | list[float] | None = None,
                 title: str | None = None) -> go.Figure:
     """The series over time. With a model: dashed lines at +-``band`` theoretical std devs.
-        Parameters
-            yrange : float, tuple, list, or None
+        Parameters:
+        
+        yrange : float, tuple, list, or None
                 If a single number `c` (e.g., 4 or 5), fixes the y-axis to [-c, c].
                 If a tuple/list `(y_min, y_max)`, sets the explicit boundaries.
-                If None, Plotly auto-scales."""
+                If None, Plotly auto-scales.
+    """
     y, model = _resolve(source, model, n, seed)
     fig = go.Figure(go.Scatter(x=np.arange(len(y)), y=y, mode="lines", name="series", line=dict(color=_THEORY, width=1.5)))
     if model is not None and model.is_stationary:
@@ -299,7 +301,7 @@ def plot_sweep(make_process: Callable[[float], ARMAProcess], values: Sequence[fl
     return fig
 
 
-# ================================================================ B: new views
+# ============================= B: new views
 def plot_regions(kind: str = "ar2", *, points: Sequence | None = None, title: str | None = None) -> go.Figure:
     """The AR(2) stationarity triangle (or MA(2) invertibility triangle) in coefficient space.
 
