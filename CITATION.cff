@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use lagshape in your research or work, please cite it using the metadata below."
+type: software
+title: "lagshape"
+abstract: "The geometry of linear time-series processes (AR, MA, ARMA), model diagnostics, cloud comparison, and interactive visualizations."
+version: "1.1.0"
+date-released: "2026-11-25"
+license: "MIT"
+repository-code: "https://github.com/kalaapks/lagshape"
+url: "https://github.com/kalaapks/lagshape"
+keywords:
+  - time-series
+  - arma
+  - geometry
+  - phase-space
+  - diagnostics
+  - forecasting
+authors:
+  - family-names: "Sadhu"
+    given-names: "Kalaap"
