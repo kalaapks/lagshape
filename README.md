@@ -241,8 +241,6 @@ print(ls.diagnose(returns))                            # compare with the practi
 
 A CSV works too: `ls.read_series("prices.csv", column="Close")`.
 
-> Don't expect much from liquid daily returns: they are close to unpredictable. Where structure *does* show up is in spreads, volatility (squared returns) and high-frequency data, which is why the practice series are built that way.
-
 ---
 
 ## The practice series
@@ -325,4 +323,4 @@ layer) :
 
 ## License
 
-MIT
+[MIT](https://github.com/kalaapks/lagshape?tab=MIT-1-ov-file)
