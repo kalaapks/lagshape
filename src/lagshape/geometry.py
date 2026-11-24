@@ -7,7 +7,7 @@ module turns that cloud into objects you can compute with:
 
 * :class:`LagCloud`        - the cloud's covariance, axes, volume, boundary
 * :class:`LinearPredictor` - the best straight-line guess of Y_t from the past
-* :func:`predictor_convergence`, :func:`ar_infinity_weights`
+* :func:`predictor_convergence`, :func:`ar_inf_weights`
                            - how the guess behaves as more lags are allowed
 * region functions         - stationarity / invertibility maps in (phi1, phi2)
 * :func:`compare_clouds`   - theory-versus-data comparison
