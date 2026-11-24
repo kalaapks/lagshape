@@ -17,7 +17,7 @@
 <p align="center">
   <img src="images/rollQ1.png" alt="Q1" width="49%"><span style="display:inline-block; width:2%;"></span><img src="images/rollQ3.png" alt="Q3" width="49%"><br>
   <img src="images/rollQ2.png" alt="Q2" width="49%"><span style="display:inline-block; width:2%;"></span><img src="images/rollQ4.png" alt="Q4" width="49%"><br>
-  <em><strong><code>rolling_cloud</code></strong> runs this to show how the volatility changes over time</em>
+  <em><strong><code>rolling_cloud</code></strong> show how the volatility changes over time and volatility clusters</em>
 </p>
 
 ---
@@ -31,22 +31,6 @@ Plot each value of a time series against the previous one: a dot at $(Y_{t-1}, Y
 - **More lags:** Adding a second lag turns the oval into a 3D **ellipsoid** and the line into a **plane**.
 
 `lagshape` turns this geometry into computable objects (`LagCloud` and `LinearPredictor`) using the **same interface for theoretical models and empirical data**. Testing a model becomes a direct comparison of two shapes—and checking where real market data departs from them.
-
----
-
-## What already existed, and what `lagshape` adds
-
-Built on `statsmodels`, `SciPy`, `NumPy`, `pandas`, and `Plotly`:
-
-| Area | Reused from ecosystem | **Added by `lagshape`** |
-|---|---|---|
-| **Process & simulation** | `statsmodels.tsa.arima_process` | Textbook sign convention (`ar=[φ]`, `ma=[θ]`, `sigma`), stability `margin`, spectral density, and custom/heavy-tailed noise simulation |
-| **Phase-space geometry** | `scipy.linalg.toeplitz`, `eigh` | `LagCloud` for any lag count: axes, elongation, volume, boundary points, and `predictor()` hyperplane |
-| **Lag & parameter geometry** | `levinson_durbin`, `ARMA.arma2ar` | `predictor_convergence`, `ar_inf_weights`, AR(2)/MA(2) stability/cycle regions, and `compare_clouds` |
-| **Data & fit verification** | `ARIMA`, `adfuller`, `acorr_ljungbox` | `diagnose` (including squared-return volatility clustering), `select_order`, `fit_arma` |
-| **Forecasting & drift** | — | Out-of-sample `walk_forward` with Clark–West test, and `rolling_cloud` to track regime/volatility shifts over time |
-| **Theory vs data** | — | **`compare_clouds`, `compare_lags`** (cloud match at lags 1…k) and **`cloud_test`**, a simulation test (with parametric-bootstrap refitting) that tells you whether a mismatch is bigger than chance |
-| **Visuals & practice data** | — | `plot_sweep`, `plot_cloud`, `plot_ellipses`, `plot_regions`, `plot_convergence`, and offline `example_series` |
 
 ---
 
@@ -303,6 +287,35 @@ A CSV works too: `ls.read_series("prices.csv", column="Close")`.
 | Data | `read_series`, `load_prices`, `to_returns`, `example_series`, `diagnose`, `fit_arma`, `select_order`, `compare_lags`, `cloud_test`, `walk_forward`, `rolling_cloud` |
 | Plots | `plot_cloud`, `plot_series`, `plot_acf`, `plot_sweep`, `plot_regions`, `plot_convergence`, `plot_ellipses` |
 
+## What already existed, and what `lagshape` adds
+
+Built on `statsmodels`, `SciPy`, `NumPy`, `pandas`, and `Plotly`:
+
+| Area | Reused from ecosystem | **Added by `lagshape`** |
+|---|---|---|
+| **Process & simulation** | `statsmodels.tsa.arima_process` | Textbook sign convention (`ar=[φ]`, `ma=[θ]`, `sigma`), stability `margin`, spectral density, and custom/heavy-tailed noise simulation |
+| **Phase-space geometry** | `scipy.linalg.toeplitz`, `eigh` | `LagCloud` for any lag count: axes, elongation, volume, boundary points, and `predictor()` hyperplane |
+| **Lag & parameter geometry** | `levinson_durbin`, `ARMA.arma2ar` | `predictor_convergence`, `ar_inf_weights`, AR(2)/MA(2) stability/cycle regions, and `compare_clouds` |
+| **Data & fit verification** | `ARIMA`, `adfuller`, `acorr_ljungbox` | `diagnose` (including squared-return volatility clustering), `select_order`, `fit_arma` |
+| **Forecasting & drift** | — | Out-of-sample `walk_forward` with Clark–West test, and `rolling_cloud` to track regime/volatility shifts over time |
+| **Theory vs data** | — | **`compare_clouds`, `compare_lags`** (cloud match at lags 1…k) and **`cloud_test`**, a simulation test (with parametric-bootstrap refitting) that tells you whether a mismatch is bigger than chance |
+| **Visuals & practice data** | — | `plot_sweep`, `plot_cloud`, `plot_ellipses`, `plot_regions`, `plot_convergence`, and offline `example_series` |
+
+---
+
+## Citation
+
+If you use `lagshape` in your work, research, or notes, please cite it using the metadata in [`CITATION.cff`](CITATION.cff) or as:
+
+```bibtex
+@software{ks_lagshape_26,
+  author  = {Sadhu, Kalaap},
+  title   = {lagshape: The geometry of linear time-series processes (AR, MA, ARMA)},
+  year    = {2026},
+  version = {1.1.0},
+  url     = {https://github.com/kalaapks/lagshape}
+}
+```
 
 ## Acknowledgements
 
