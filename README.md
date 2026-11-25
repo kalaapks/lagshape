@@ -1,6 +1,6 @@
 # lagshape
 
-> **See what an AR, MA, or ARMA process "looks" like—test whether a model that supposedly fits your data actually does, and spot where linear ARMA breaks down (such as volatility clustering).**
+> **See what an AR, MA, or ARMA process "looks" like—test whether a model that supposedly fits your market data actually does, and spot where linear ARMA breaks down (such as volatility clustering).**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
@@ -293,7 +293,7 @@ Built on `statsmodels`, `SciPy`, `NumPy`, `pandas`, and `Plotly`:
 |---|---|---|
 | **Process & simulation** | `statsmodels.tsa.arima_process` | Textbook sign convention (`ar=[φ]`, `ma=[θ]`, `sigma`), stability `margin`, spectral density, and custom/heavy-tailed noise simulation |
 | **Phase-space geometry** | `scipy.linalg.toeplitz`, `eigh` | `LagCloud` for any lag count: axes, elongation, volume, boundary points, and `predictor()` hyperplane |
-| **Lag & parameter geometry** | `levinson_durbin`, `ARMA.arma2ar` | `predictor_convergence`, `ar_inf_weights`, AR(2)/MA(2) stability/cycle regions, and `compare_clouds` |
+| **Lag & parameter geometry** | `levinson_durbin`, `ARMA.arma2ar` | `predictor_convergence`, `ar_inf_weights`, AR(2)/MA(2) stability/cycle regions |
 | **Data & fit verification** | `ARIMA`, `adfuller`, `acorr_ljungbox` | `diagnose` (including squared-return volatility clustering), `select_order`, `fit_arma` |
 | **Forecasting & drift** | — | Out-of-sample `walk_forward` with Clark–West test, and `rolling_cloud` to track regime/volatility shifts over time |
 | **Theory vs data** | — | **`compare_clouds`, `compare_lags`** (cloud match at lags 1…k) and **`cloud_test`**, a simulation test (with parametric-bootstrap refitting) that tells you whether a mismatch is bigger than chance |
